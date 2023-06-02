@@ -28,6 +28,18 @@ public class Blog{
     @OneToMany(mappedBy = "blog",cascade = CascadeType.ALL)
     List<Image> images = new ArrayList<>();
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setPubDate(Date pubDate) {
+        this.pubDate = pubDate;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+
     public Integer getId() {
         return id;
     }
