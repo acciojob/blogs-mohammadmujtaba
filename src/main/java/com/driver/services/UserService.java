@@ -39,6 +39,6 @@ public class UserService {
         if(Objects.isNull(user))
             user.setPassword(password);
 
-        return user;
+        return userRepository3.save(user);
     }
 }
