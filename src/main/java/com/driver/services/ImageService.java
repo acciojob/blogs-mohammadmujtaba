@@ -19,7 +19,7 @@ public class ImageService {
     public Image addImage(Integer blogId, String description, String dimensions){
         //add an image to the blog
         Optional<Blog> blogOptional = blogRepository2.findById(blogId);
-        if(blogOptional.isPresent()){
+        //if(blogOptional.isPresent()){
             Image image = new Image();
             image.setBlog(blogOptional.get());
             image.setDescription(description);
@@ -29,15 +29,15 @@ public class ImageService {
             blogOptional.get().getImageList().add(savedImage);
 
             return savedImage;
-        }
-        return null;
+        //}
+        //return null;
     }
 
     public void deleteImage(Integer id){
-        Optional<Image> optionalImage = imageRepository2.findById(id);
-        if(optionalImage.isPresent()) {
+        //Optional<Image> optionalImage = imageRepository2.findById(id);
+        //if(optionalImage.isPresent()) {
             imageRepository2.deleteById(id);
-        }
+        //}
     }
 
     public int countImagesInScreen(Integer id, String screenDimensions) {
@@ -45,8 +45,8 @@ public class ImageService {
         Optional<Image> optionalImage = imageRepository2.findById(id);
         if(optionalImage.isPresent()) {
             Image image = optionalImage.get();
-            String imagedDimension[] = image.getDimensions().split("[V]");
-            String size[] = screenDimensions.split("[V]");
+            String imagedDimension[] = image.getDimensions().split("[X]");
+            String size[] = screenDimensions.split("[X]");
 
             int imageSize = Integer.parseInt(imagedDimension[0])*Integer.parseInt(imagedDimension[1]);
             int screenSize = Integer.parseInt(size[0])*Integer.parseInt(size[1]);

@@ -22,7 +22,7 @@ public class BlogService {
     public Blog createAndReturnBlog(Integer userId, String title, String content) {
         //create a blog at the current time
         Optional<User> optionalUser = userRepository1.findById(userId);
-        if(optionalUser.isPresent()){
+      //  if(optionalUser.isPresent()){
             Blog blog = new Blog();
             blog.setContent(content);
             blog.setUser(optionalUser.get());
@@ -32,15 +32,15 @@ public class BlogService {
 
             optionalUser.get().getBlogList().add(savedBlog);
             return savedBlog;
-        }
-        return null;
+       // }
+      //  return null;
     }
 
     public void deleteBlog(int blogId){
         //delete blog and corresponding images
-        Blog blog = blogRepository1.findById(blogId).get();
-        if(!Objects.isNull(blog)) {
+       // Blog blog = blogRepository1.findById(blogId).get();
+        //if(!Objects.isNull(blog)) {
             blogRepository1.deleteById(blogId);
-        }
+      //  }
     }
 }
