@@ -18,21 +18,19 @@ public class ImageService {
 
     public Image addImage(Integer blogId, String description, String dimensions){
         //add an image to the blog
-        Optional<Blog> blogOptional = blogRepository2.findById(blogId);
-        //if(blogOptional.isPresent()){
-        Blog blog = blogOptional.get();
-            Image image = new Image();
-            image.setBlog(blog);
-            image.setDescription(description);
-            image.setDimensions(dimensions);
+        Blog blog = blogRepository2.findById(blogId).get();
+        Image image = new Image();
+        image.setDescription(description);
+        image.setDimensions(dimensions);
+        image.setBlog(blog);
 
-            Image savedImage = imageRepository2.save(image);
-            if(!(blog == null))
-                blog.getImageList().add(savedImage);
+        blog.getImageList().add(image);
+        Blog savedBlog = blogRepository2.save(blog);
+        int size = blog.getImageList().size();
+        Image savedImage = savedBlog.getImageList().get(size-1);
 
-            return savedImage;
-        //}
-        //return null;
+        return savedImage;
+
     }
 
     public void deleteImage(Integer id){
@@ -42,7 +40,7 @@ public class ImageService {
         //}
     }
 
-    public int countImagesInScreen(Integer id, String screenDimensions) {
+    public int  countImagesInScreen(Integer id, String screenDimensions) {
         //Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
         Optional<Image> optionalImage = imageRepository2.findById(id);
         if(optionalImage.isPresent()) {
