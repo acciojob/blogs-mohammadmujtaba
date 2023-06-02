@@ -26,7 +26,7 @@ public class ImageService {
             image.setDimensions(dimensions);
 
             Image savedImage = imageRepository2.save(image);
-            blogOptional.get().getImages().add(savedImage);
+            blogOptional.get().getImageList().add(savedImage);
 
             return savedImage;
         }

@@ -76,11 +76,11 @@ public class User{
         this.lastname = lastname;
     }
 
-    public List<Blog> getBlogs() {
+    public List<Blog> getBlogList() {
         return blogs;
     }
 
-    public void setBlogs(List<Blog> blogs) {
+    public void setBlogList(List<Blog> blogs) {
         this.blogs = blogs;
     }
 }

@@ -30,7 +30,7 @@ public class BlogService {
 
             Blog savedBlog = blogRepository1.save(blog);
 
-            optionalUser.get().getBlogs().add(savedBlog);
+            optionalUser.get().getBlogList().add(savedBlog);
             return savedBlog;
         }
         return null;
