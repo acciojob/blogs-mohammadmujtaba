@@ -23,14 +23,16 @@ public class BlogService {
         //create a blog at the current time
         Optional<User> optionalUser = userRepository1.findById(userId);
       //  if(optionalUser.isPresent()){
+        User user = optionalUser.get();
             Blog blog = new Blog();
             blog.setContent(content);
-            blog.setUser(optionalUser.get());
+            blog.setUser(user);
             blog.setTitle(title);
 
             Blog savedBlog = blogRepository1.save(blog);
+            if(!(user == null))
+                user.getBlogList().add(savedBlog);
 
-            optionalUser.get().getBlogList().add(savedBlog);
             return savedBlog;
        // }
       //  return null;
